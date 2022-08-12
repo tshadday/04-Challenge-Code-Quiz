@@ -3,6 +3,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
 button {
     background-color: lightblue;
 }

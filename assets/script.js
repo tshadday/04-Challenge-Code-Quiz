@@ -1,34 +1,36 @@
-var timerDiv = document.querySelector(".timer");
+var timeDiv = document.querySelector("#time");
 var startButton = document.getElementById("start");
 
-var timer;
-var time;
+var time = 70;
 var score = 0;
 
 function startTimer() {
     // Sets timer
-    timer = setInterval(function() {
-      timerCount--;
-      timerDiv.textContent = time;
+    var timerInterval = setInterval(function() {
+      time--;
+      timeDiv.textContent = time;
       // Time up, game over
-      if (timerCount === 0) {
-        clearInterval(timer);
+      if (time === 0) {
+        clearInterval(timerInterval);
         gameOver();
       }
-    }, 70000);
-}
+    }, 1000);
+};
   
 
-function wrongAnswer () {
-    var timer = timer - 5
-}
+// function wrongAnswer () {
+//     var timer = timer - 5
+// }
 
-function rightAnswer () {
-    score++
-}
+// function rightAnswer () {
+//     score++
+// }
 
 function startGame() {
-  //startTimer();
+  // starts the timer
+  startTimer();
+  // removes instructions and start buttons
+  // adds questions and option buttons
   var startScreen = document.getElementById("instructions");
   var optionButtons = document.getElementById("options")
   startScreen.style.display = "none";
