@@ -1,0 +1,16 @@
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    background-color: lightblue;
+}
+
+#instructions {
+    display: block;
+}
+
+#options {
+    display: none;
+}
