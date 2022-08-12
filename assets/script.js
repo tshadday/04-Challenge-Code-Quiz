@@ -1,6 +1,9 @@
 var timeDiv = document.querySelector("#time");
 var scoreDiv = document.querySelector("#score");
 var startButton = document.getElementById("start");
+var startScreen = document.getElementById("instructions");
+var endScreen = document.getElementById("gameEnd");
+var optionButtons = document.getElementById("options")
 var question = document.querySelector("#question");
 var option1 = document.querySelector("#option1");
 var option2 = document.querySelector("#option2");
@@ -18,15 +21,15 @@ var question2 = "What file holds the styling of the webpage?";
 // answer A [0]
 var answers2 = ["A) CSS", "B) JS", "C) HTML", "D) IDK"];
 
-var questions3 = "What does CSS stand for?";
+var question3 = "What does CSS stand for?";
 // answer C  [2]
 var answers3 = ["A) Cascading Script Sheet", "B) Country Songs Suck", "C) Cascading Style Sheet", "D) Cascading System Standard"];
 
-var questions4 = "What tag is used to link a CSS file to the HTML?";
+var question4 = "What tag is used to link a CSS file to the HTML?";
 // answer A [0]
 var answers4 = ["A) Link", "B) Script", "C) Source", "D) Meta"];
 
-var questions5 = "What does a typical README.md file contain?";
+var question5 = "What does a typical README.md file contain?";
 // answer B [1]
 var answers5 = ["A) Pictures of Cats", "B) Instructions on using the application", "C) Books you should read", "D) Nothing"];
 
@@ -46,7 +49,7 @@ function startTimer() {
       // Time up, game over
       if (time <= 0) {
         clearInterval(timerInterval);
-        gameOver();
+        gameEnd();
       }
     }, 1000);
 };
@@ -101,23 +104,113 @@ function displayQuestion2() {
   option4.textContent = answers2[3];
 
   option1.onclick = function() {
-    rightAnswer()
-    //displayQuestion3()
+    rightAnswer();
+    displayQuestion3();
   };
 
   option2.onclick = function() {
-    wrongAnswer()
-    //displayQuestion3()
+    wrongAnswer();
+    displayQuestion3();
   };
 
   option3.onclick = function() {
-    wrongAnswer()
-    //displayQuestion3()
+    wrongAnswer();
+    displayQuestion3();
   }
 
   option4.onclick = function() {
-    rightAnswer()
-    //displayQuestion3()
+    wrongAnswer();
+    displayQuestion3();
+  }
+}
+
+function displayQuestion3() {
+  // displays question and options to page
+  // correct answer is option 3
+  question.textContent = question3;
+  option1.textContent = answers3[0];
+  option2.textContent = answers3[1];
+  option3.textContent = answers3[2];
+  option4.textContent = answers3[3];
+
+  option1.onclick = function() {
+    wrongAnswer();
+    displayQuestion4();
+  };
+
+  option2.onclick = function() {
+    wrongAnswer();
+    displayQuestion4();
+  };
+
+  option3.onclick = function() {
+    rightAnswer();
+    displayQuestion4();
+  }
+
+  option4.onclick = function() {
+    wrongAnswer();
+    displayQuestion4();
+  }
+}
+
+function displayQuestion4() {
+  // displays question and options to page
+  // correct answer is option 1
+  question.textContent = question4;
+  option1.textContent = answers4[0];
+  option2.textContent = answers4[1];
+  option3.textContent = answers4[2];
+  option4.textContent = answers4[3];
+
+  option1.onclick = function() {
+    rightAnswer();
+    displayQuestion5();
+  };
+
+  option2.onclick = function() {
+    wrongAnswer();
+    displayQuestion5();
+  };
+
+  option3.onclick = function() {
+    wrongAnswer();
+    displayQuestion5();
+  }
+
+  option4.onclick = function() {
+    wrongAnswer();
+    displayQuestion5();
+  }
+}
+
+function displayQuestion5() {
+  // displays question and options to page
+  // correct answer is option 2
+  question.textContent = question5;
+  option1.textContent = answers5[0];
+  option2.textContent = answers5[1];
+  option3.textContent = answers5[2];
+  option4.textContent = answers5[3];
+
+  option1.onclick = function() {
+    wrongAnswer();
+    gameEnd();
+  };
+
+  option2.onclick = function() {
+    rightAnswer();
+    gameEnd();
+  };
+
+  option3.onclick = function() {
+    wrongAnswer();
+    gameEnd();
+  }
+
+  option4.onclick = function() {
+    wrongAnswer();
+    gameEnd();
   }
 }
 
@@ -126,10 +219,14 @@ function startGame() {
   startTimer();
   // removes instructions and start buttons
   // adds questions and option buttons
-  var startScreen = document.getElementById("instructions");
-  var optionButtons = document.getElementById("options")
   startScreen.style.display = "none";
   optionButtons.style.display = "block";
 
   displayQuestion1();
+}
+
+function gameEnd() {
+  optionButtons.style.display = "none";
+  endScreen.style.display = "block";
+  time = 0;
 }

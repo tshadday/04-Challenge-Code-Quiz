@@ -19,3 +19,7 @@ button {
 #options {
     display: none;
 }
+
+#gameEnd {
+    display: none;
+}
