@@ -230,3 +230,9 @@ function gameEnd() {
   endScreen.style.display = "block";
   time = 0;
 }
+
+function saveScore() {
+  var initials = document.getElementById("initials").value;
+  localStorage.setItem("Initials", initials);
+  localStorage.setItem("Score", score);
+}
