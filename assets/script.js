@@ -1,4 +1,5 @@
 var timeDiv = document.querySelector("#time");
+var scoreDiv = document.querySelector("#score");
 var startButton = document.getElementById("start");
 var question = document.querySelector("#question");
 var option1 = document.querySelector("#option1");
@@ -31,7 +32,11 @@ var answers5 = ["A) Pictures of Cats", "B) Instructions on using the application
 
 function timeDisplay() {
   timeDiv.textContent = time;
-}
+};
+
+function scoreDisplay() {
+  scoreDiv.textContent = score
+};
 
 function startTimer() {
     // Sets timer
@@ -52,7 +57,8 @@ function wrongAnswer () {
 }
 
 function rightAnswer () {
-    score++
+    score = score + 10;
+    scoreDisplay();
 }
 
 function displayQuestion1() {
